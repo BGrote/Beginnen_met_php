@@ -10,8 +10,8 @@
 	<form method="post" action="">
 	Naam: <input type="text" name="naam" placeholder="Uw naam" required /><br />
 	Land:
-	<select name="land">
-		<option value="default">Maak een keuze</option>
+	<select name="land" required>
+	    <option value="" disabled selected>Select your option</option>
 		<option value="NL">Nederland</option>
 		<option value="DE">Duitsland</option>
 		<option value="EN">Engeland</option>
@@ -19,7 +19,10 @@
 		<option value="FR">français</option>  
 		<option value="IT">Italiano</option>
 	</select>
-	<br />
+	<br>
+	</label>
+	
+	<br>
 	<input type="submit" name="submit" value="gegevens versturen" />
 	</form>
 
@@ -28,10 +31,8 @@
 		$naam = $_POST["naam"];
 		$land = $_POST["land"];
 
-		if($land=='default'){
-			echo 'maak een keuze';
-		}
-		elseif($land=='NL'){
+	
+		if($land=='NL'){
 			echo 'Goedemorgen '.$naam;
 		}
 		elseif($land=='DE'){
