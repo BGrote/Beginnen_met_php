@@ -12,12 +12,12 @@
 	Land:
 	<select name="land" required>
 	    <option value="" disabled selected>Select your option</option>
-		<option value="NL">Nederland</option>
-		<option value="DE">Duitsland</option>
-		<option value="EN">Engeland</option>
-		<option value="ES">Español</option> 
-		<option value="FR">français</option>  
-		<option value="IT">Italiano</option>
+		<option value="NL"<?php if(isset($_POST["land"]) && $_POST["land"] == "NL") echo "selected"; ?>>Nederland</option>
+		<option value="DE"<?php if(isset($_POST["land"]) && $_POST["land"] == "DE") echo "selected"; ?>>Duitsland</option>
+		<option value="EN"<?php if(isset($_POST["land"]) && $_POST["land"] == "EN") echo "selected"; ?>>Engeland</option>
+		<option value="ES"<?php if(isset($_POST["land"]) && $_POST["land"] == "ES") echo "selected"; ?>>Español</option> 
+		<option value="FR"<?php if(isset($_POST["land"]) && $_POST["land"] == "FR") echo "selected"; ?>>français</option>  
+		<option value="IT"<?php if(isset($_POST["land"]) && $_POST["land"] == "IT") echo "selected"; ?>>Italiano</option>
 	</select>
 	<br>
 	</label>
