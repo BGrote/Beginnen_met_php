@@ -27,31 +27,38 @@
 	</form>
 
 	<?php 
-	if(isset($_POST["submit"])){
-		$naam = $_POST["naam"];
-		$land = $_POST["land"];
-
-	
-		if($land=='NL'){
-			echo 'Goedemorgen '.$naam;
-		}
-		elseif($land=='DE'){
-			echo 'Guten Morgen '.$naam;
-		}
-		elseif($land=='EN'){
-			echo 'Good morning '.$naam;
-		}
-		elseif($land=='ES'){
-			echo 'Buen día '.$naam;
-		}
-		elseif($land=='FR'){
-			echo 'Bonjour '.$naam;
-		}
-		elseif($land=='IT'){
-			echo 'Buongiorno '.$naam;
-		}
-
-	}
+if(isset($_POST["submit"])) {
+    switch ($_POST["submit"]) {
+        case "gegevens versturen":
+            $naam = $_POST["naam"];
+            $land = $_POST["land"];
+            
+            switch ($land) {
+                case 'NL':
+                    echo 'Goedemorgen '.$naam;
+                    break;
+                case 'DE':
+                    echo 'Guten Morgen '.$naam;
+                    break;
+                case 'EN':
+                    echo 'Good morning '.$naam;
+                    break;
+                case 'ES':
+                    echo 'Buen día '.$naam;
+                    break;
+                case 'FR':
+                    echo 'Bonjour '.$naam;
+                    break;
+                case 'IT':
+                    echo 'Buongiorno '.$naam;
+                    break;
+                default:
+                    echo 'maak een keuze '.$naam;
+                    break;
+            }
+            break;
+    }
+}
 	?>
 
 </body>
