@@ -1,0 +1,48 @@
+
+body,h1{
+    font-family:'Courier New', Courier, monospace; 
+    background-color:bisque;
+}
+
+table, th, td {
+    border:1px solid black;
+    padding: 5px;
+}
+
+.pizzanaam{
+    font-weight: bold;
+}
+
+td{
+    text-align: center;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    flex: 1;
+}
+
+.order-details {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.order-details h2 {
+    margin-top: 0;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details li {
+    margin-bottom: 5px;
+}
+    
