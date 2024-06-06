@@ -1,45 +1,78 @@
-<?php
-$aantalHawai = $_POST["aantalHawai"];
-$aantalFunghi = $_POST["aantalFunghi"];
-$aantalmagarita = $_POST["aantalmagarita"];
-$aantaltuno = $_POST["aantaltuno"];
-$aantalveggie = $_POST["aantalveggie"];
-$aantalmagaritaROYALE = $_POST["aantalmagaritaROYALE"];
-$aantalshourma = $_POST["aantalshourma"];
-$aantalamerican = $_POST["aantalamerican"];
-$bezorgen = $_POST["bezorgen"];
+<!DOCTYPE html>
+<html lang="en">
 
-$totaalprijs = $aantalHawai * 10;
-$totaalprijs += $aantalFunghi * 12.50;
-$totaalprijs += $aantalamerican * 2645;
-$totaalprijs += $aantalmagarita * 10;
-$totaalprijs += $aantaltuno * 15;
-$totaalprijs += $aantalmagaritaROYALE * 20;
-$totaalprijs += $aantalveggie * 15;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <?php
+    $aantalHawai = $_POST["aantalhawai"];
+    $aantalFunghi = $_POST["aantalFunghi"];
+    $aantalmagarita = $_POST["aantalmagarita"];
+    $aantalmariana = $_POST["aantalmariana"];
+    $aantalquattro = $_POST["aantalquattro"];
+    $bezorgen = $_POST["bezorgen"];
+    $besteldatum = $_POST["besteldatum"];
 
 
-echo "Aantal Hawai: $aantalHawai - Prijs: " . $aantalHawai * 10 . "<br>";
-echo "Aantal American: $aantalamerican - Prijs: " . $aantalamerican * 2645 . "<br>";	
-echo "Aantal Funghi: $aantalFunghi - Prijs: " . $aantalFunghi * 12.50 . "<br>";
-echo "Aantal magarita - $aantalmagarita - Prijs: " . $aantalmagarita * 10 . "<br>";
-echo "Aantal tuno - $aantaltuno - Prijs: " . $aantaltuno * 15 . "<br>";
+    // Checkt of het maandag is
+    $dayofweek = date('w', strtotime($besteldatum));
 
-if($bezorgen === "ja"){
-$bezorgkosten = 5;
-$totaalprijs += $bezorgkosten;
-}
-if($bezorgen === "nee"){
+    // Maandag korting 
+    if ($dayofweek === '1') {
     
-}
-/*$totaalprijs = $aantalamerican * 2645;
-$totaalprijs = $aantalFunghi * 12.50;
-$totaalprijs = $aantalmagarita * 10;
-$totaalprijs = $aantalmagaritaROYALE * 20;
-$totaalprijs = $aantalshourma * 55;
-$totaalprijs = $aantaltuno * 15;
-$totaalprijs = $aantalveggie * 15;
-*/
-echo "Totaalprijs: $totaalprijs";
+        $totaalprijs = $aantalHawai * 7.50;
+        $totaalprijs += $aantalFunghi * 7.50;
+        $totaalprijs += $aantalmagarita * 7.50;
+        $totaalprijs += $aantalquattro * 7.50;
+        $totaalprijs += $aantalmariana * 7.50;
 
 
-?>
+
+
+        echo "Aantal Hawai: $aantalHawai - Prijs: €" . $aantalHawai * 7.50 . "<br>";
+        echo "Aantal Funghi: $aantalFunghi - Prijs: €" . $aantalFunghi * 7.50 . "<br>";
+        echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 7.50 . "<br>";
+        echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 7.50 . "<br>";
+        echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 7.50 . "<br>";
+
+        
+    } else {
+        $totaalprijs = $aantalHawai * 10;
+        $totaalprijs += $aantalFunghi * 12.50;
+        $totaalprijs += $aantalmagarita * 10;
+        $totaalprijs += $aantalquattro * 15;
+        $totaalprijs += $aantalmariana * 13.95;
+
+
+
+
+        echo "Aantal Hawai: $aantalHawai - Prijs: €" . $aantalHawai * 10 . "<br>";
+        echo "Aantal Funghi: $aantalFunghi - Prijs: €" . $aantalFunghi * 12.50 . "<br>";
+        echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 10 . "<br>";
+        echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 13.95 . "<br>";
+        echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 15 . "<br>";
+    }
+    ?>
+    <br>
+    <?php
+    if ($bezorgen === "ja") {
+        $bezorgkosten = 5;
+        $totaalprijs += $bezorgkosten;
+        echo "Bezorgkosten: €$bezorgkosten";
+    }
+    ?>
+    <br><br>
+    <?php
+
+    echo "Totaalprijs: €$totaalprijs";
+
+    ?>
+</body>
+
+</html>
