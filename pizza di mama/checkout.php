@@ -24,13 +24,19 @@
     $dayofweek = date('w', strtotime($besteldatum));
 
     // Maandag korting 
-    if ($dayofweek === '1') {
+    if ($dayofweek === '1'){
     
         $totaalprijs = $aantalHawai * 7.50;
         $totaalprijs += $aantalFunghi * 7.50;
         $totaalprijs += $aantalmagarita * 7.50;
         $totaalprijs += $aantalquattro * 7.50;
         $totaalprijs += $aantalmariana * 7.50;
+
+        $korting = $aantalHawai * 2.50;
+        $korting += $aantalFunghi * 5;
+        $korting += $aantalmagarita * 2.50;
+        $korting += $aantalquattro * 7.50;
+        $korting += $aantalmariana * 5.45;
 
 
 
@@ -40,9 +46,37 @@
         echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 7.50 . "<br>";
         echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 7.50 . "<br>";
         echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 7.50 . "<br>";
+        echo "uw korting €$korting";
+    } 
 
-        
-    } else {
+    // Vrijdag korting
+    if($dayofweek === '5'){
+         
+    
+        $totaalprijs = $aantalHawai * 11.50;
+        $totaalprijs += $aantalFunghi * 12.50;
+        $totaalprijs += $aantalmagarita * 12.50 ;
+        $totaalprijs += $aantalquattro * 15;
+        $totaalprijs += $aantalmariana * 13.95;
+
+        $korting = $totaalprijs * 0.15;
+        $totaalprijs = $totaalprijs - $korting; 
+        $totaalprijs = round($totaalprijs, 2);
+        $korting = round($korting, 2);
+
+
+
+
+        echo "Aantal Hawai: $aantalHawai - Prijs: €" . $aantalHawai * 7.50 . "<br>";
+        echo "Aantal Funghi: $aantalFunghi - Prijs: €" . $aantalFunghi * 7.50 . "<br>";
+        echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 7.50 . "<br>";
+        echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 7.50 . "<br>";
+        echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 7.50 . "<br><br>";
+        echo "uw korting €$korting";
+    }
+
+
+    else {
         $totaalprijs = $aantalHawai * 10;
         $totaalprijs += $aantalFunghi * 12.50;
         $totaalprijs += $aantalmagarita * 10;
