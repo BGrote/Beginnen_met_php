@@ -3,113 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Pizza di mama</title>
+    <title>Pizza shop</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welkom bij Pizza di mama</h1>
-
-    <?php
-    // Initialize default prices
-    $margheritaprijs = 12.50;
-    $fungiprijs = 12.50;
-    $marianaprijs = 13.95;
-    $hawaiprijs = 11.50;
-    $quattroprijs = 15.00;
-
-    // Check if form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Get the selected date
-        $besteldatum = isset($_POST['Besteldatum']) ? $_POST['Besteldatum'] : '';
-
-        // Check if the selected date is a Monday
-        if ($besteldatum && date('N', strtotime($besteldatum)) == 1) {
-            // Set all pizza prices to 7.50 if it's Monday
-            $margheritaprijs = 7.50;
-            $fungiprijs = 7.50;
-            $marianaprijs = 7.50;
-            $hawaiprijs = 7.50;
-            $quattroprijs = 7.50;
-        }
-
-        // Get the quantities
-        $aantalmargarita = isset($_POST['aantalmargarita']) ? (int)$_POST['aantalmargarita'] : 0;
-        $aantalfunghi = isset($_POST['aantalfunghi']) ? (int)$_POST['aantalfunghi'] : 0;
-        $aantalmariana = isset($_POST['aantalmariana']) ? (int)$_POST['aantalmariana'] : 0;
-        $aantalhawai = isset($_POST['aantalhawai']) ? (int)$_POST['aantalhawai'] : 0;
-        $aantalquattro = isset($_POST['aantalquattro']) ? (int)$_POST['aantalquattro'] : 0;
-
-        // Calculate total price
-        $totaalprijs = ($aantalmargarita * $margheritaprijs) +
-                       ($aantalfunghi * $fungiprijs) +
-                       ($aantalmariana * $marianaprijs) +
-                       ($aantalhawai * $hawaiprijs) +
-                       ($aantalquattro * $quattroprijs);
-
-        $date = date('d-m-y');
-    
-    }
-    ?>
-
-    <form method="post" action="checkout.php">
-        <label for="info">Naam:</label>
-        <input class="info" name="naam" placeholder="Naam." required>
-        <br><br>
-        <label for="info">Adress:</label>
-        <input class="info" name="adress" placeholder="Adress" required>
-        <br><br>
-        <label for="info">Postcode:</label>
-        <input class="info" name="postcode" placeholder="Postcode" required>
-        <br><br>
-        <label for="info">Plaats:</label>
-        <input class="info" name="plaats" placeholder="Plaats" required>
-        <br><br>
-        <label for="besteldatum">Besteldatum:</label>
-        <input type="date" id="besteldatum" name="Besteldatum" required>
-          <?php
-          
-          echo "Vandaag: $date";
-          ?>
-        <br><br>
-        <table>
-            <tr>
-                <td>
-                    <span class="pizzanaam">Pizza Margherita</span><br><br>
-                    <img src="margherita.jpg" height="150px"><br>
-                    € <?= $margheritaprijs ?><br>
-                    aantal: <input type="number" min="0" name="aantalmargarita" value="0" max="20">
-                </td>
-                <td>
-                    <span class="pizzanaam">Pizza Funghi</span><br><br>
-                    <img src="funghi.jpg" height="150px"><br>
-                    € <?= $fungiprijs ?><br>
-                    aantal: <input type="number" min="0" name="aantalfunghi" value="0" max="20">
-                </td>
-                <td>
-                    <span class="pizzanaam">Pizza Mariana</span><br><br>
-                    <img src="mariana.jpg" height="150px"><br>
-                    € <?= $marianaprijs ?><br>
-                    aantal: <input type="number" min="0" name="aantalmariana" value="0" max="20">
-                </td>
-                <td>
-                    <span class="pizzanaam">Pizza Hawai</span><br><br>
-                    <img src="hawai.jpg" height="150px"><br>
-                    € <?= $hawaiprijs ?><br>
-                    aantal: <input type="number" min="0" name="aantalhawai" value="0" max="20">
-                </td>
-                <td>
-                    <span class="pizzanaam">Pizza Quattro Formaggi</span><br><br>
-                    <img src="quattro.jpg" height="150px"><br>
-                    € <?= $quattroprijs ?><br>
-                    aantal: <input type="number" min="0" name="aantalquattro" value="0" max="20">
-                </td>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="bestellen.html">Pizza bestellen</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li style="float:right"><a href="about.html">About</a></li>
+    </ul>
+</nav>
+<main>
+    <h1>Bestel hier de pizza</h1>
+    Maak uw keuze uit een lekkere pizza
+    <br><br>
+<form method="post" action="checkout.php">
+    <table>
+        <tr>
+            <td>
+                <span class="pizzaName">Pizza Hawai</span><br><br>
+                <img src="images/pizzahawai.jpg" height="150px"><br>
+                € 10,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalHawai" value="0">
+            </td>
+            <td>
+                <h2>Pizza Funghi</h2><br>
+                <img src="images/pizzafungi.jpg" height="150px"><br>
+                € 12,50<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalFunghi" value="0">
+            
+            </td>
+            <td>
+                <h2> Pizza magarita</h2>
+                <img src="images/pizza maga.jpg" height="150px">
+                € 10,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalmagarita" value="0">
+            </td>
+            <td>
+                <h2> Pizza tuno</h2>
+                <img src="images/pizzatuno.jpg" height="150px">
+                € 15,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantaltuno" value="0">
+            </td>
             </tr>
-        </table>
-        <br>
-        <input type="submit" class="bestelButton" value="Bestel">
-    </form>
-    <?php
-    echo "<p>Totaalprijs: €" . number_format($totaalprijs, 2) . "</p>";
-    ?>
+  
+            <tr>
+            <td>
+                <h2> Pizza veggie</h2>
+                <img src="images/pizzaveggie.jpg" height="150px">
+                € 15,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalveggie" value="0">
+            </td>
+            <td>
+                <h2> PIZZA MARGARITHA ROYALE</h2>
+                <img src="images/PIZZA MARGARITHA ROYALE.jpg" height="150px">
+                € 20,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalmagaritaROYALE" value="0">
+            </td>
+            <td>
+                <h2> pizza shourma</h2>
+                <img src="images/shoarma.jpg" height="150px">
+                € 55,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalshourma" value="0">
+            </td>
+            <td>
+                <h2> pizza american</h2>
+                <img src="images/amarican.avif" height="150px">
+                € 2645,00<br>
+                aantal <input class="aantal" type="number" min="0" name="aantalamerican" value="0">
+            </td>
+        </tr>        
+    </table>
+    Bezorgen?
+    <input type="radio" id="bezorgen" name="bezorgen" class="bezorgknop"
+    value="ja">Ja
+    <input type="radio" id="bezorgen" name="bezorgen" class="bezorgknop"
+    value="nee">Nee
+    
+
+    <input type="submit" value="Bestellen" class="bestelknop">
+</main>
+</from>
+
+
 </body>
 </html>
