@@ -77,10 +77,12 @@
         </tr>        
     </table>
     Bezorgen?
-    <input type="radio" id="bezorgen" name="bezorgen" class="bezorgknop"
-    value="ja">Ja
-    <input type="radio" id="bezorgen" name="bezorgen" class="bezorgknop"
-    value="nee">Nee
+    <input type="radio" id="ja" name="bezorgen" value="ja">
+  <label for="ja">Ja</label>
+  <input type="radio" id="nee" name="bezorgen" value="nee">
+  <label for="nee">Nee</label>
+  <br><br>
+
     
 
     <input type="submit" value="Bestellen" class="bestelknop">
