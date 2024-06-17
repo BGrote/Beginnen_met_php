@@ -20,7 +20,7 @@
     $besteldatum = $_POST["besteldatum"];
 
 
-    // Checkt of het maandag is
+    // Dag check
     $dayofweek = date('w', strtotime($besteldatum));
 
     // Maandag korting 
@@ -59,20 +59,23 @@
         $totaalprijs += $aantalquattro * 15;
         $totaalprijs += $aantalmariana * 13.95;
 
+        if($totaalprijs > 20){
         $korting = $totaalprijs * 0.15;
         $totaalprijs = $totaalprijs - $korting; 
         $totaalprijs = round($totaalprijs, 2);
         $korting = round($korting, 2);
+        }
 
 
 
-
-        echo "Aantal Hawai: $aantalHawai - Prijs: €" . $aantalHawai * 7.50 . "<br>";
-        echo "Aantal Funghi: $aantalFunghi - Prijs: €" . $aantalFunghi * 7.50 . "<br>";
-        echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 7.50 . "<br>";
-        echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 7.50 . "<br>";
-        echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 7.50 . "<br><br>";
+        echo "Aantal Hawai: $aantalHawai - Prijs: €" . $aantalHawai * 11.50 . "<br>";
+        echo "Aantal Funghi: $aantalFunghi - Prijs: €" . $aantalFunghi * 12.50 . "<br>";
+        echo "Aantal magarita: $aantalmagarita - Prijs: €" . $aantalmagarita * 12.50 . "<br>";
+        echo "Aantal mariana: $aantalmariana - Prijs: €" . $aantalmariana * 13.95 . "<br>";
+        echo "Aantal Quattro Formaggi: $aantalquattro - Prijs: €" . $aantalquattro * 15. . "<br><br>";
+        if($korting > 0){
         echo "uw korting €$korting";
+        }
     }
 
 
